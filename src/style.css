@@ -1,0 +1,29 @@
+.clearBtn {
+  text-decoration: none;
+  margin-left: 40%;
+  padding: 15px;
+  font-size: x-large;
+}
+
+ul li input {
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+input:placeholder-shown {
+  font-style: italic;
+  font-size: large;
+}
+
+#task {
+  padding-right: 40%;
+}
+
+ul li {
+  display: flex;
+}
+
+ul li p {
+  width: 95%;
+  max-width: 95%;
+}
