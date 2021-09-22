@@ -5,9 +5,9 @@
 
 ## Built With
 
-    - HTML
-    - CSS
-    - Javascript
+- HTML
+- CSS
+- Javascript
 
 ## Getting Started
 
@@ -20,9 +20,9 @@ To get a local copy up and running follow these simple example steps.
 
 ### Cloning the repo
 
-- Copy this link https://github.com/mahbubul14/to-do-list/tree/list-structure
+- Copy this link https://github.com/mahbubul14/to-do-list/
 - Open your terminal or command line in the folder you want the project to be
-- Run the command git clone with the link you copied above git clone https://github.com/mahbubul14/to-do-list/tree list-structure
+- Run the command git clone with the link you copied above git clone https://github.com/mahbubul14/to-do-list/
 - Open the folder with your code editor and run the index.html file using a live server
 
 ## Authors
