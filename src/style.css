@@ -5,6 +5,11 @@
   font-size: x-large;
 }
 
+ul li input {
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
 input:placeholder-shown {
   font-style: italic;
   font-size: large;
@@ -14,16 +19,11 @@ input:placeholder-shown {
   padding-right: 40%;
 }
 
-ul li{
+ul li {
   display: flex;
 }
 
-ul li input {
-  margin-top: 5px;
-  margin-right: 10px;
-}
-
 ul li p {
-width: 95%;
-max-width: 95%;
+  width: 95%;
+  max-width: 95%;
 }
