@@ -15,15 +15,15 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-    - Web browser (e.g. Google chrome or Firefox)
-    - Code Editor (e.g. Vscode or Atom)
+    * Web browser (e.g. Google chrome or Firefox)
+    * Code Editor (e.g. Vscode or Atom)
 
 ### Cloning the repo
 
-    - Copy this link https://github.com/mahbubul14/to-do-list/tree/list-structure
-    - Open your terminal or command line in the folder you want the project to be
-    - Run the command git clone with the link you copied above git clone https://github.com/mahbubul14/to-do-list/tree/list-structure
-    - Open the folder with your code editor and run the index.html file using a live server
+    * Copy this link https://github.com/mahbubul14/to-do-list/tree/list-structure
+    * Open your terminal or command line in the folder you want the project to be
+    * Run the command git clone with the link you copied above git clone https://github.com/mahbubul14/to-do-list/tree/list-structure
+    * Open the folder with your code editor and run the index.html file using a live server
 
 ## Authors
 
