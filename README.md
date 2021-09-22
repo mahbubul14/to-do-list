@@ -1,20 +1,29 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
-# Awesome Books
+# To-do-list
 
-> This webpage is designed to add and remove books from a list dynamically using Javascript. When the user clicks the 'Add' button it takes the title and author the user entered, adds it to a list of books and displays the book in the page. When user clicks 'Remove' button the book is removed and disappears from the page. 
-
-![screenshot](https://github.com/Fikerte-T/Awesome-books/blob/manage-books/awesome-books-screenshot.png)
+> "To-do list" is a tool that helps to organize your day. It simply lists the things that you need to do and allows you to mark them as complete. You will build a simple website that allows for doing that, and you will do it using ES6 and Webpack!
 
 ## Built With
 
-- HTML
-- CSS
-- Javascript
+    - HTML
+    - CSS
+    - Javascript
 
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
-[git@github.com:Fikerte-T/Awesome-books.git](git@github.com:Fikerte-T/Awesome-books.git)
+
+### Prerequisites
+
+    - Web browser (e.g. Google chrome or Firefox)
+    - Code Editor (e.g. Vscode or Atom)
+
+### Cloning the repo
+
+    - Copy this link https://github.com/mahbubul14/to-do-list/tree/list-structure
+    - Open your terminal or command line in the folder you want the project to be
+    - Run the command git clone with the link you copied above git clone https://github.com/mahbubul14/to-do-list/tree/list-structure
+    - Open the folder with your code editor and run the index.html file using a live server
 
 ## Authors
 
