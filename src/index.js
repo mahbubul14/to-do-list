@@ -1,5 +1,9 @@
 // import _ from 'lodash';
-// import './style.css';
+import './style.css';
+import { isCompleted, isDone } from './status';
+
+const storage = window.localStorage;
+
 const task = [
   {
     description: 'Adding a new item',
@@ -18,21 +22,34 @@ const task = [
   },
 ];
 
-function render() {
-  task.forEach((tsk) => {
+function render(taskStorage) {
+  taskStorage.forEach((tsk) => {
     const { description } = tsk;
     const list = document.getElementById('list');
     const item = document.createElement('li');
-    const itemInput = document.createElement('input');
+    const checkBox = document.createElement('input');
+    checkBox.setAttribute('type', 'checkbox');
+    checkBox.checked = isDone(tsk);
     const itemText = document.createElement('p');
-    itemText.innerHTML = description;
     const threeDot = document.createElement('i');
     threeDot.className = 'fas fa-ellipsis-v';
-    itemInput.setAttribute('type', 'checkbox');
+    itemText.innerHTML = description;
     list.appendChild(item);
-    item.appendChild(itemInput);
+    item.appendChild(checkBox);
     item.appendChild(itemText);
     item.appendChild(threeDot);
+    checkBox.addEventListener('click', () => {
+      isCompleted(checkBox.checked, tsk);
+      storage.setItem('stored', JSON.stringify(taskStorage));
+    });
   });
 }
-render();
+function checkStorage() {
+  const taskStorage = JSON.parse(storage.getItem('stored'));
+  if (taskStorage === null) {
+    storage.setItem('stored', JSON.stringify(task));
+    return JSON.parse(storage.getItem('stored'));
+  }
+  return taskStorage;
+}
+render(checkStorage());
