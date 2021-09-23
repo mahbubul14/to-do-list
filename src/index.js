@@ -1,5 +1,5 @@
-// import _ from 'lodash';
 import './style.css';
+
 import { isCompleted, isDone } from './status.js';
 
 const storage = window.localStorage;
