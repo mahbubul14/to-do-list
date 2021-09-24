@@ -2,13 +2,13 @@ import './style.css';
 import { isCompleted, isDone } from './status.js';
 import {
   add, edit, remove, removeChecked,
-} from './addremove.js'
+} from './addremove.js';
 
 const storage = window.localStorage;
 const task = [];
-const addBtn = document.getElementById('addBtn')
-const clear = document.getElementById('clear')
-const form = document.getElementById('form')
+const addBtn = document.getElementById('addBtn');
+const clear = document.getElementById('clear');
+const form = document.getElementById('form');
 
 function render(taskStorage) {
   taskStorage.forEach((tsk) => {
@@ -43,7 +43,7 @@ function render(taskStorage) {
       itemText.style.textDecoration = 'line-through';
       checkbox.addEventListener('click', () => {
         itemText.style.textDecoration = 'none';
-      })
+      });
       isCompleted(checkbox.checked, tsk);
       storage.setItem('stored', JSON.stringify(taskStorage));
     });
