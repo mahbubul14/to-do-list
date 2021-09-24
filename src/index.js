@@ -1,26 +1,14 @@
 import './style.css';
-
 import { isCompleted, isDone } from './status.js';
+import {
+  add, edit, remove, removeChecked,
+} from './addremove.js'
 
 const storage = window.localStorage;
-
-const task = [
-  {
-    description: 'Adding a new item',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Going shop',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Do Exercise',
-    completed: false,
-    index: 2,
-  },
-];
+const task = [];
+const addBtn = document.getElementById('addBtn')
+const clearBtn = document.getElementById('clearBtn')
+const list = document.getElementById('list')
 
 function render(taskStorage) {
   taskStorage.forEach((tsk) => {
