@@ -2,7 +2,7 @@ import './style.css';
 import { isCompleted, isDone } from './status.js';
 import {
   add, edit, remove, removeChecked,
-} from './addremove.js';
+} from './addremove';
 
 const storage = window.localStorage;
 const task = [];
@@ -10,28 +10,23 @@ const addBtn = document.getElementById('addBtn');
 const clear = document.getElementById('clear');
 const form = document.getElementById('form');
 
-function render(taskStorage) {
-  taskStorage.forEach((tsk) => {
-    const { description } = tsk;
+let render = (taskStorage) => {
+  taskStorage.forEach((task) => {
+    const { description } = task;
     const list = document.getElementById('list');
     const item = document.createElement('li');
     const checkbox = document.createElement('input');
     const itemText = document.createElement('p');
-    // const threeDot = document.createElement('i');
     const removeIcon = document.createElement('i');
 
     checkbox.setAttribute('type', 'checkbox');
-    checkbox.id = 'checkbox';
     checkbox.checked = isDone(task);
-    // threeDot.className = 'fas fa-ellipsis-v';
     removeIcon.className = 'far fa-trash-alt';
-    removeIcon.id = 'removebtn';
     itemText.innerHTML = description;
 
     list.appendChild(item);
     item.appendChild(checkbox);
     item.appendChild(itemText);
-    // item.appendChild(threeDot);
     item.appendChild(removeIcon);
 
     removeIcon.addEventListener('click', () => {
@@ -60,7 +55,8 @@ function render(taskStorage) {
     });
   });
 }
-function checkStorage() {
+
+  let checkStorage = () => {
   const taskStorage = JSON.parse(storage.getItem('stored'));
   if (taskStorage === null) {
     storage.setItem('stored', JSON.stringify(task));
