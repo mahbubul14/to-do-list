@@ -2,7 +2,7 @@ import './style.css';
 import { isCompleted, isDone } from './status.js';
 import {
   add, edit, remove, removeChecked,
-} from './addremove';
+} from './addremove.js';
 
 const storage = window.localStorage;
 const task = [];
@@ -10,7 +10,7 @@ const addBtn = document.getElementById('addBtn');
 const clear = document.getElementById('clear');
 const form = document.getElementById('form');
 
-let render = (taskStorage) => {
+const render = (taskStorage) => {
   taskStorage.forEach((task) => {
     const { description } = task;
     const list = document.getElementById('list');
@@ -39,7 +39,7 @@ let render = (taskStorage) => {
       checkbox.addEventListener('click', () => {
         itemText.style.textDecoration = 'none';
       });
-      isCompleted(checkbox.checked, tsk);
+      isCompleted(checkbox.checked, task);
       storage.setItem('stored', JSON.stringify(taskStorage));
     });
 
@@ -54,16 +54,16 @@ let render = (taskStorage) => {
       }
     });
   });
-}
+};
 
-  let checkStorage = () => {
+const checkStorage = () => {
   const taskStorage = JSON.parse(storage.getItem('stored'));
   if (taskStorage === null) {
     storage.setItem('stored', JSON.stringify(task));
     return JSON.parse(storage.getItem('stored'));
   }
   return taskStorage;
-}
+};
 
 addBtn.addEventListener('click', (e) => {
   e.preventDefault();
