@@ -1,55 +1,80 @@
 import './style.css';
-
 import { isCompleted, isDone } from './status.js';
+import {
+  add, edit, remove, removeChecked,
+} from './addremove.js';
 
 const storage = window.localStorage;
+const task = [];
+const addBtn = document.getElementById('addBtn');
+const clear = document.getElementById('clear');
+const form = document.getElementById('form');
 
-const task = [
-  {
-    description: 'Adding a new item',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Going shop',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Do Exercise',
-    completed: false,
-    index: 2,
-  },
-];
-
-function render(taskStorage) {
-  taskStorage.forEach((tsk) => {
-    const { description } = tsk;
+const render = (taskStorage) => {
+  taskStorage.forEach((task) => {
+    const { description } = task;
     const list = document.getElementById('list');
     const item = document.createElement('li');
-    const checkBox = document.createElement('input');
-    checkBox.setAttribute('type', 'checkbox');
-    checkBox.checked = isDone(tsk);
+    const checkbox = document.createElement('input');
     const itemText = document.createElement('p');
-    const threeDot = document.createElement('i');
-    threeDot.className = 'fas fa-ellipsis-v';
+    const removeIcon = document.createElement('i');
+
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.checked = isDone(task);
+    removeIcon.className = 'far fa-trash-alt';
     itemText.innerHTML = description;
+
     list.appendChild(item);
-    item.appendChild(checkBox);
+    item.appendChild(checkbox);
     item.appendChild(itemText);
-    item.appendChild(threeDot);
-    checkBox.addEventListener('click', () => {
-      isCompleted(checkBox.checked, tsk);
+    item.appendChild(removeIcon);
+
+    removeIcon.addEventListener('click', () => {
+      remove(taskStorage, task);
+      window.location.reload();
+    });
+
+    checkbox.addEventListener('click', () => {
+      itemText.style.textDecoration = 'line-through';
+      checkbox.addEventListener('click', () => {
+        itemText.style.textDecoration = 'none';
+      });
+      isCompleted(checkbox.checked, task);
       storage.setItem('stored', JSON.stringify(taskStorage));
     });
+
+    itemText.addEventListener('click', () => {
+      itemText.setAttribute('contenteditable', 'true');
+    });
+
+    itemText.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        edit(task, itemText.innerText);
+        window.location.reload();
+      }
+    });
   });
-}
-function checkStorage() {
+};
+
+const checkStorage = () => {
   const taskStorage = JSON.parse(storage.getItem('stored'));
   if (taskStorage === null) {
     storage.setItem('stored', JSON.stringify(task));
     return JSON.parse(storage.getItem('stored'));
   }
   return taskStorage;
-}
+};
+
+addBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  add(checkStorage(), document.getElementById('task').value);
+  form.reset();
+  window.location.reload();
+});
+
+clear.addEventListener('click', () => {
+  removeChecked(checkStorage());
+  window.location.reload();
+});
+
 render(checkStorage());
